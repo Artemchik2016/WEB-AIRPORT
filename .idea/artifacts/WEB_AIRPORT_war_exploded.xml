@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="WEB-AIRPORT:war exploded">
+    <output-path>$PROJECT_DIR$/target/airport</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="WEB-AIRPORT" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.5" />
+          <element id="library" level="project" name="Maven: org.flywaydb:flyway-core:4.1.2" />
+          <element id="library" level="project" name="Maven: javaee:javaee-api:5" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/airport/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="WEB-AIRPORT/web/Web" />
+    </root>
+  </artifact>
+</component>
