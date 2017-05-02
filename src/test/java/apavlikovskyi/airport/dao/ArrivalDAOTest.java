@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNull;
  */
 public class ArrivalDAOTest {
 
-        private ArrivalDAO arrivalDAO;
+        private apavlikovskyi.airport.dao.ArrivalDAO arrivalDAO;
         private VoyageDAO voyageDAO;
 
         @Before

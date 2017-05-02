@@ -1,5 +1,6 @@
 package apavlikovskyi.airport.dao.daoUtil;
 
+
 import org.flywaydb.core.Flyway;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -57,5 +58,4 @@ public class DataBaseConnection {
                 dbProps.getProperty("db.user"), dbProps.getProperty("db.password"));
         flyway.migrate();
     }
-
 }
