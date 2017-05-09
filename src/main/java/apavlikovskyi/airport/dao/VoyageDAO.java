@@ -28,13 +28,14 @@ public class VoyageDAO {
         }
     }
 
-    public List getAll() {
+    public List<VoyageEntity> getAll() {
         List<VoyageEntity> list = new ArrayList<>();
         ResultSet resultSet=null;
         try (PreparedStatement statement = getConnection().prepareStatement("SELECT * FROM voyage")){
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 VoyageEntity voyageEntity = new VoyageEntity();
+                voyageEntity.setId(resultSet.getInt("ID"));
                 voyageEntity.setFlightNumber(resultSet.getString("Flight_number"));
                 voyageEntity.setArrivalPort(resultSet.getString("Arrival_port"));
                 voyageEntity.setDeparturePort(resultSet.getString("Departure_port"));

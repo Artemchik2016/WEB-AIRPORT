@@ -1,16 +1,14 @@
 <!DOCTYPE HTML>
 <html>
 <body>
-<h2>Hello World!</h2>
+<h2>Welcome to Odessa Airport</h2>
 
-<table>
-    <tr>
-        <td>Flight-ID</td>
-        <td>Airplane</td>
-        <td>Arrival port</td>
-        <td>Departure port</td>
-    </tr>
-</table>
+<form method="get" action="/voyage_table">
+    <input type="submit" value="Show Voyage Table">
+</form>
+
+<a href="/edit_voyage_table">Change Voyage Table</a>
+
 
 </body>
 </html>
