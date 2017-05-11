@@ -1,5 +1,8 @@
-.button {
-clear:both; 
-text-align:right;
+
+form {
+    position: relative;
+}
+th { 
+	border: 1px solid gray 
 }
 
