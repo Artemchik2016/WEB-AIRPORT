@@ -23,7 +23,7 @@ public class AddNewRow extends HttpServlet {
         String flight_number =  request.getParameter("flight_number");
         String arrivalPort = request.getParameter("arrival_port");
         String departurePort = request.getParameter("departure_port");
-        int voyageId = Integer.parseInt(request.getParameter("voyage_id"));
+        int voyageId = Integer.parseInt(request.getParameter("id"));
         VoyageEntity voyageEntity = new VoyageEntity(voyageId,flight_number,arrivalPort,departurePort);
         VoyageDAO voyageDAO= new VoyageDAO();
         voyageDAO.save(voyageEntity);
@@ -37,20 +37,11 @@ public class AddNewRow extends HttpServlet {
         }
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE HTML>");
         out.println("<html>");
         out.println("<head>");
-        out.println(" <script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js\"></script> \n" +
+        out.println("<script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js\"></script> \n" +
                 "    <script src=\"http://malsup.github.com/jquery.form.js\"></script> ");
-        out.println(" <script> \n" +
-                "        // wait for the DOM to be loaded \n" +
-                "        $(document).ready(function() { \n" +
-                "            // bind 'myForm' and provide a simple callback function \n" +
-                "            $('.myForm').ajaxForm(function() { \n" +
-                "                \n" +
-                "            }); \n" +
-                "        }); \n" +
-                "    </script> ");
+        out.println("<script src='ajax.js'></script>");
         out.println("<title>Airport</title>");
         out.println("<link rel='stylesheet' type='text/css' href='style.css'>");
         out.println("</head>");
@@ -58,6 +49,7 @@ public class AddNewRow extends HttpServlet {
         out.println("<h3>Voyage table</h3>");
         out.println("<table border=1>");
         out.println("<tr>");
+        out.println("<td><strong>ID</strong></td>");
         out.println("<td><strong>Flight Number</strong></td>");
         out.println("<td><strong>Arrival port</strong></td>");
         out.println("<td><strong>Departure port</strong></td>");
@@ -67,17 +59,16 @@ public class AddNewRow extends HttpServlet {
         list.sort(Comparator.comparingInt(VoyageEntity::getId));
         for(Iterator it = list.iterator(); it.hasNext();){
             VoyageEntity voyageEntity= (VoyageEntity) it.next();
-            out.println("<form class='myForm' method='post' action='add_new_row'>");
             out.println("<tr>");
+            out.println("<td><input type='text' name='id' value='" + voyageEntity.getId()+"'"+"></td>");
             out.println("<td><input type='text' name='flight_number' value='" + voyageEntity.getFlightNumber()+"'"+"></td>");
             out.println("<td><input type='text' name='arrival_port' value='" + voyageEntity.getArrivalPort()+"'"+"></td>");
             out.println("<td><input type='text' name='departure_port' value='" + voyageEntity.getDeparturePort()+"'"+"></td>");
-            out.println("<td><input class='button' type='submit' value='Применить изменения для ID "+ voyageEntity.getId()+ "'></td>");
             out.println("</tr>");
-            out.println("</form>");
         }
         out.println("<form class='myForm' method='post' action='add_new_row'>");
         out.println("<tr>");
+        out.println("<td><input type='text' name='id'></td>");
         out.println("<td><input type='text' name='flight_number'></td>");
         out.println("<td><input type='text' name='arrival_port'></td>");
         out.println("<td><input type='text' name='departure_port'></td>");

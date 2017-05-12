@@ -43,15 +43,7 @@ public class EditVoyageTable extends HttpServlet {
         out.println("<head>");
         out.println(" <script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js\"></script> \n" +
                 "    <script src=\"http://malsup.github.com/jquery.form.js\"></script> ");
-        out.println(" <script> \n" +
-                "        // wait for the DOM to be loaded \n" +
-                "        $(document).ready(function() { \n" +
-                "            // bind 'myForm' and provide a simple callback function \n" +
-                "            $('.myForm').ajaxForm(function() { \n" +
-                "                \n" +
-                "            }); \n" +
-                "        }); \n" +
-                "    </script> ");
+        out.println("<script src='ajax.js'></script>");
         out.println("<title>Airport</title>");
         out.println("<link rel='stylesheet' type='text/css' href='style.css'>");
         out.println("</head>");
