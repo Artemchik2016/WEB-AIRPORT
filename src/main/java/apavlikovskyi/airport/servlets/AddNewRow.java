@@ -43,7 +43,7 @@ public class AddNewRow extends HttpServlet {
                 "    <script src=\"http://malsup.github.com/jquery.form.js\"></script> ");
         out.println("<script src='ajax.js'></script>");
         out.println("<title>Airport</title>");
-        out.println("<link rel='stylesheet' type='text/css' href='style.css'>");
+        out.println("<link rel='stylesheet' type='text/css' href='style2.css'>");
         out.println("</head>");
         out.println("<body>");
         out.println("<h3>Voyage table</h3>");

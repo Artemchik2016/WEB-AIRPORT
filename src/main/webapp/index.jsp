@@ -1,13 +1,20 @@
 <!DOCTYPE HTML>
 <html>
+<head>
+    <link rel='stylesheet' type='text/css' href='style2.css'>
+    <title>Airport Management</title>
+</head>
 <body>
-<h2>Welcome to Odessa Airport</h2>
+<h1>Welcome to Odessa Airport</h1>
 
-<form method="get" action="voyage_table">
-    <input type="submit" value="Show Voyage Table">
+<form action="voyage_table">
+<input id="main_button" type="submit" value="Show Voyage Table" >
 </form>
 
-<a href="/edit_voyage_table">Change Voyage Table</a>
+<form action="/edit_voyage_table">
+    <input id="main_button2" type="submit" value="Change Voyage Table" >
+</form>
+
 
 
 </body>

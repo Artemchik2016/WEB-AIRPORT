@@ -34,7 +34,14 @@ public class ViewVoyageTable extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<!DOCTYPE HTML>");
         out.println("<html>");
+        out.println("<head>");
+        out.println(" <script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js\"></script> \n" +
+                "    <script src=\"http://malsup.github.com/jquery.form.js\"></script> ");
+        out.println("<script src='ajax.js'></script>");
         out.println("<title>Airport</title>");
+        out.println("<link rel='stylesheet' type='text/css' href='style2.css'>");
+        out.println("<title>Airport</title>");
+        out.println("</head>");
         out.println("<body>");
         out.println("<h3>Voyage table</h3>");
         out.print("<table border =1>");
