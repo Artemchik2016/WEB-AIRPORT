@@ -47,7 +47,7 @@ public class AddNewRow extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         out.println("<h3>Voyage table</h3>");
-        out.println("<table border=1>");
+        out.println("<table class='table_blur'>");
         out.println("<tr>");
         out.println("<td><strong>ID</strong></td>");
         out.println("<td><strong>Flight Number</strong></td>");
