@@ -1,6 +1,8 @@
-package apavlikovskyi.airport.servlets;
+package apavlikovskyi.airport.servlets.Airplanes;
 
+import apavlikovskyi.airport.dao.AirplanesDAO;
 import apavlikovskyi.airport.dao.VoyageDAO;
+import apavlikovskyi.airport.entity.AirplanesEntity;
 import apavlikovskyi.airport.entity.VoyageEntity;
 
 import javax.servlet.ServletException;
@@ -10,17 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Артем on 03.05.2017.
+ * Created by Diana P on 04.06.2017.
  */
-@WebServlet("/voyage_table")
-public class ViewVoyageTable extends HttpServlet {
+@WebServlet("/airplanes_table")
+public class ViewAirplanesTable extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
     }
 
@@ -46,18 +46,18 @@ public class ViewVoyageTable extends HttpServlet {
         out.println("<h3>Voyage table</h3>");
         out.print("<table class='table_blur'>");
         out.println("<tr>");
-        out.println("<td><strong>Flight Number</strong></td>");
-        out.println("<td><strong>Arrival port</strong></td>");
-        out.println("<td><strong>Departure port</strong></td>");
+        out.println("<td><strong>Voyage</strong></td>");
+        out.println("<td><strong>Model-Airplane</strong></td>");
+        out.println("<td><strong>Seats capacity</strong></td>");
         out.println("</tr>");
-        VoyageDAO voyageDAO=new VoyageDAO();
-        List<VoyageEntity> list= voyageDAO.getAll();
-        for(Iterator it= list.iterator(); it.hasNext();){
-            VoyageEntity voyageEntity= (VoyageEntity) it.next();
+        AirplanesDAO airplanesDAO=new AirplanesDAO();
+        List<AirplanesEntity> list = airplanesDAO.getAll();
+        for(Iterator it = list.iterator(); it.hasNext();){
+            AirplanesEntity airplanesEntity= (AirplanesEntity)it.next();
             out.println("<tr>");
-            out.println("<td>" + voyageEntity.getFlightNumber()+"</td>");
-            out.println("<td>" + voyageEntity.getArrivalPort() +"</td>");
-            out.println("<td>" + voyageEntity.getDeparturePort() + "</td>");
+            out.println("<td>" + airplanesEntity.getVoyage_flightNumber()+"</td>");
+            out.println("<td>" + airplanesEntity.getName() +"</td>");
+            out.println("<td>" + airplanesEntity.getSeats_capacity() + "</td>");
             out.println("</tr>");
         }
         out.println("</table");
@@ -66,3 +66,4 @@ public class ViewVoyageTable extends HttpServlet {
         out.close();
     }
 }
+

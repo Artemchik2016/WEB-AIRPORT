@@ -1,4 +1,4 @@
-package apavlikovskyi.airport.servlets;
+package apavlikovskyi.airport.servlets.Voyages;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

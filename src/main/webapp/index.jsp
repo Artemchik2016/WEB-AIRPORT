@@ -3,6 +3,9 @@
 <head>
     <link rel='stylesheet' type='text/css' href='style2.css'>
     <title>Airport Management</title>
+    <script>
+        window.location="http://localhost:8080/voyage_table";
+    </script>
 </head>
 <body>
 <h1>Welcome to Odessa Airport</h1>
