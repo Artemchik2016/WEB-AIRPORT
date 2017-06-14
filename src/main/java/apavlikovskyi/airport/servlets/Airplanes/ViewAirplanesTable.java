@@ -1,10 +1,7 @@
 package apavlikovskyi.airport.servlets.Airplanes;
 
 import apavlikovskyi.airport.dao.AirplanesDAO;
-import apavlikovskyi.airport.dao.VoyageDAO;
 import apavlikovskyi.airport.entity.AirplanesEntity;
-import apavlikovskyi.airport.entity.VoyageEntity;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,11 +53,12 @@ public class ViewAirplanesTable extends HttpServlet {
             AirplanesEntity airplanesEntity= (AirplanesEntity)it.next();
             out.println("<tr>");
             out.println("<td>" + airplanesEntity.getVoyage_flightNumber()+"</td>");
-            out.println("<td>" + airplanesEntity.getName() +"</td>");
+            out.println("<td>" + airplanesEntity.getModel() +"</td>");
             out.println("<td>" + airplanesEntity.getSeats_capacity() + "</td>");
             out.println("</tr>");
         }
         out.println("</table");
+        out.println("<p><a href='http://localhost:8080/'>Вернуться на главную страницу</a></p>");
         out.println("<body>");
         out.println("</html>");
         out.close();

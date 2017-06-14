@@ -54,14 +54,14 @@ public class AirplanesDAOTest {
     @Test
     public void update(){
         airplanesDAO.update(new AirplanesEntity("KT4390","TU-154",250));
-        assertEquals("TU-154",airplanesDAO.getById("KT4390").getName());
+        assertEquals("TU-154",airplanesDAO.getById("KT4390").getModel());
     }
 
 
 
     @Test
     public void save(){
-        assertEquals(airplanesDAO.getById("KT4390").getName(),"TU-134");
+        assertEquals(airplanesDAO.getById("KT4390").getModel(),"TU-134");
     }
 
     @Test

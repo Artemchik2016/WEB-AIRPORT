@@ -24,12 +24,11 @@ public class EditAirplanesTable extends HttpServlet {
 
         protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             String flight_number =  request.getParameter("flight_number");
-            String arrivalPort = request.getParameter("name");
-            String departurePort = request.getParameter("seats_capacity");
-            int voyageId = Integer.parseInt(request.getParameter("voyage_id"));
-            VoyageEntity voyageEntity = new VoyageEntity(voyageId,flight_number,arrivalPort,departurePort);
-            VoyageDAO voyageDAO= new VoyageDAO();
-            voyageDAO.update(voyageEntity);
+            String model = request.getParameter("model");
+            int seatsCapacity = Integer.parseInt(request.getParameter("seats_capacity"));
+            AirplanesEntity airplanesEntity = new AirplanesEntity(flight_number,model,seatsCapacity);
+            AirplanesDAO airplanesDAO= new AirplanesDAO();
+            airplanesDAO.update(airplanesEntity);
 
         }
 
@@ -51,35 +50,29 @@ public class EditAirplanesTable extends HttpServlet {
             out.println("<link rel='stylesheet' type='text/css' href='style2.css'>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h3>Voyage table</h3>");
+            out.println("<h3>Airplanes table</h3>");
             out.println("<table class='table_blur'>");
             out.println("<tr>");
-            out.println("<td><strong>ID</strong></td>");
             out.println("<td><strong>Flight Number</strong></td>");
-            out.println("<td><strong>Arrival port</strong></td>");
-            out.println("<td><strong>Departure port</strong></td>");
+            out.println("<td><strong>Model-name</strong></td>");
+            out.println("<td><strong>Seats capacity</strong></td>");
             out.println("</tr>");
             AirplanesDAO airplanesDAO=new AirplanesDAO();
             List<AirplanesEntity> list= airplanesDAO.getAll();
-            list.sort(Comparator.comparing(AirplanesEntity::getName));
+            list.sort(Comparator.comparing(AirplanesEntity::getModel));
             for(Iterator iterator = list.iterator(); iterator.hasNext();){
                 AirplanesEntity airplanes= (AirplanesEntity)iterator.next();
-                out.println("<tr>");
-                out.println("<td>" + airplanes.getVoyage_flightNumber()+"</td>");
-                out.println("<td>" + airplanes.getName() +"</td>");
-                out.println("<td>" + airplanes.getSeats_capacity() + "</td>");
-                out.println("</tr>");
-                out.println("<form class='myForm' method='post' action='edit_voyage_table'>");
+                out.println("<form class='myForm' method='post' action='edit_airplanes_table'>");
                 out.println("<tr>");
                 out.println("<td><input type='text' name='flight_number' value=" + "'" + airplanes.getVoyage_flightNumber()+ "'" +"></td>");
-                out.println("<td><input type='text' name='model' value='" + airplanes.getName()+"'"+"></td>");
+                out.println("<td><input type='text' name='model' value='" + airplanes.getModel()+"'"+"></td>");
                 out.println("<td><input type='text' name='seats_capacity' value='" + airplanes.getSeats_capacity()+"'"+"></td>");
-                out.println("<td><input class='button' type='submit' value='Применить изменения для ID'"  +  airplanes.getName()+ "'></td>");
+                out.println("<td><input class='button' type='submit' value='Применить изменения для ID'"  +  airplanes.getModel()+ "'></td>");
                 out.println("</tr>");
                 out.println("</form>");
             }
             out.println("</table>");
-            out.println("<p><a href='add_new_row'>Добавить новую строку</a></p>");
+            out.println("<p><a href='add_new_airplane_row'>Добавить новую строку</a></p>");
             out.println("<p><a href='http://localhost:8080/'>Вернуться на главную страницу</a></p>");
             out.println("</body>");
             out.print("</html>");

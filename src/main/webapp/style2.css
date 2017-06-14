@@ -11,7 +11,7 @@ h1{
 }
 
 
-#main_button {
+.main_button {
     color: #fff; /* цвет текста */
     text-decoration: none; /* убирать подчёркивание у ссылок */
     user-select: none; /* убирать выделение текста */
@@ -22,29 +22,31 @@ h1{
 
 
 }
-#main_button:hover {
-    background: rgb(232,95,76);
-} /* при наведении курсора мышки */
-#main_button:active {
-    background: rgb(152,15,0);
-} /* при нажатии */
 
-#main_button2 {
-    color: #fff; /* цвет текста */
-    text-decoration: none; /* убирать подчёркивание у ссылок */
-    user-select: none; /* убирать выделение текста */
-    background: rgb(212,75,20); /* фон кнопки */
-    padding: .7em 1.5em; /* отступ от текста */
-    outline: none; /* убирать контур в Mozilla */
+.main_button:hover {
+    background: rgb(232,95,76);
+}
+.main_button:active {
+    background: rgb(152,15,0);
+}
+
+/*#main_button2 {
+    color: #fff; !* цвет текста *!
+    text-decoration: none; !* убирать подчёркивание у ссылок *!
+    user-select: none; !* убирать выделение текста *!
+    background: rgb(212,75,20); !* фон кнопки *!
+    padding: .7em 1.5em; !* отступ от текста *!
+    outline: none; !* убирать контур в Mozilla *!
     width: 180px;
 
 }
 #main_button2:hover {
     background: rgb(232,95,14);
-} /* при наведении курсора мышки */
+} !* при наведении курсора мышки *!
 #main_button2:active {
     background: rgb(152,15,0);
-} /* при нажатии */
+} !* при нажатии *!
+*!*/
 
 
 .table_blur {

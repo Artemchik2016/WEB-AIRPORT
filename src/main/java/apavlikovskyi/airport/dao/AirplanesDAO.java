@@ -76,7 +76,7 @@ public class AirplanesDAO {
         public  void save(AirplanesEntity airplanesEntity){
             try(PreparedStatement statement=getConnection().prepareStatement("INSERT INTO airplanes VALUES (?,?,?)")) {
                 statement.setString(1,airplanesEntity.getVoyage_flightNumber());
-                statement.setString(2,airplanesEntity.getName());
+                statement.setString(2,airplanesEntity.getModel());
                 statement.setInt(3,airplanesEntity.getSeats_capacity());
                 statement.executeUpdate();
                 statement.close();
@@ -87,7 +87,7 @@ public class AirplanesDAO {
         public  void update(AirplanesEntity airplanesEntity){
             try(PreparedStatement statement=getConnection().prepareStatement("UPDATE airplanes SET " +
                     "Name = ?, Seats_capacity = ? WHERE Voyage_flightNumber = ?")) {
-                statement.setString(1,airplanesEntity.getName());
+                statement.setString(1,airplanesEntity.getModel());
                 statement.setInt(2,airplanesEntity.getSeats_capacity());
                 statement.setString(3,airplanesEntity.getVoyage_flightNumber());
                 statement.executeUpdate();

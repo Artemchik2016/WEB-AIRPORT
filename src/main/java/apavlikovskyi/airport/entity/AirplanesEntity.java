@@ -26,7 +26,7 @@ public class AirplanesEntity {
         this.Voyage_flightNumber = voyage_flightNumber;
     }
 
-    public String getName() {
+    public String getModel() {
         return name;
     }
 
