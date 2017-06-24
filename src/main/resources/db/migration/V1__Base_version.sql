@@ -7,6 +7,7 @@ PRIMARY KEY (Flight_number)
 );
 
 CREATE TABLE airplanes(
+ID INT NOT NULL AUTO_INCREMENT,
 Voyage_flightNumber VARCHAR(10) NOT NULL,
 Name VARCHAR(10),
 Seats_capacity INT,
