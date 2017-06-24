@@ -7,7 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import static apavlikovskyi.airport.dao.daoUtil.DataBaseConnection.*;
+
+import static apavlikovskyi.airport.dao.daoUtil.DataBaseConnection.getConnection;
+
 /**
  * Created by Diana P on 04.04.2017.
  */

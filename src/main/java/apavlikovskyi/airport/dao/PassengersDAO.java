@@ -1,6 +1,7 @@
 package apavlikovskyi.airport.dao;
 
 import apavlikovskyi.airport.entity.PassengersEntity;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

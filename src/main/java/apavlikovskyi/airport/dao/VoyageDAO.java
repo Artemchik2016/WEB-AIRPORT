@@ -1,8 +1,5 @@
 package apavlikovskyi.airport.dao;
 
-import static apavlikovskyi.airport.dao.daoUtil.DataBaseConnection.*;
-
-import apavlikovskyi.airport.entity.TicketEntity;
 import apavlikovskyi.airport.entity.VoyageEntity;
 
 import java.sql.PreparedStatement;
@@ -10,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static apavlikovskyi.airport.dao.daoUtil.DataBaseConnection.getConnection;
 
 /**
  * Created by Артем on 08.04.2017.

@@ -1,4 +1,4 @@
-package apavlikovskyi.spring_airport.dao;
+package apavlikovskyi.airport.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

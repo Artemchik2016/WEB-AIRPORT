@@ -1,13 +1,12 @@
 CREATE TABLE voyage(
-ID INT NOT NULL,
+ID INT NOT NULL primary key auto_increment,
 Flight_number VARCHAR(10),
 Arrival_port VARCHAR(10),
-Departure_port VARCHAR(10),
-PRIMARY KEY (Flight_number)
+Departure_port VARCHAR(10)
 );
 
 CREATE TABLE airplanes(
-ID INT NOT NULL AUTO_INCREMENT,
+ID INT NOT NULL auto_increment,
 Voyage_flightNumber VARCHAR(10) NOT NULL,
 Name VARCHAR(10),
 Seats_capacity INT,
@@ -16,7 +15,7 @@ PRIMARY KEY(Voyage_flightNumber)
 );
 
 CREATE TABLE passengers(
-ID INT NOT NULL AUTO_INCREMENT,
+ID INT NOT NULL auto_increment,
 First_name VARCHAR(20),
 Last_name VARCHAR(20),
 Nationality VARCHAR(10),
@@ -26,7 +25,7 @@ SEX VARCHAR(10),
 PRIMARY KEY(ID)
 );
 CREATE TABLE ticket(
-ID INT NOT NULL AUTO_INCREMENT,
+ID INT NOT NULL auto_increment,
 Voyage_flightNumber VARCHAR(10),
 Class VARCHAR(10),
 Passenger_id INT NOT NULL,

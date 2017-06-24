@@ -1,9 +1,7 @@
 package apavlikovskyi.airport.servlets.Airplanes;
 
 import apavlikovskyi.airport.dao.AirplanesDAO;
-import apavlikovskyi.airport.dao.VoyageDAO;
 import apavlikovskyi.airport.entity.AirplanesEntity;
-import apavlikovskyi.airport.entity.VoyageEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -57,7 +55,7 @@ public class EditAirplanesTable extends HttpServlet {
             out.println("<td><strong>Model-name</strong></td>");
             out.println("<td><strong>Seats capacity</strong></td>");
             out.println("</tr>");
-            AirplanesDAO airplanesDAO=new AirplanesDAO();
+            AirplanesDAO airplanesDAO = new AirplanesDAO();
             List<AirplanesEntity> list= airplanesDAO.getAll();
             list.sort(Comparator.comparing(AirplanesEntity::getModel));
             for(Iterator iterator = list.iterator(); iterator.hasNext();){

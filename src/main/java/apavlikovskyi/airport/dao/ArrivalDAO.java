@@ -1,6 +1,5 @@
 package apavlikovskyi.airport.dao;
 
-import apavlikovskyi.airport.entity.AirplanesEntity;
 import apavlikovskyi.airport.entity.ArrivalEntity;
 
 import java.sql.PreparedStatement;

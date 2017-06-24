@@ -7,9 +7,10 @@ import java.util.Properties;
 public class PropertiesUtils {
 
 
-    public static Properties readProperties (){
+    public static Properties readProperties (String path){
         Properties properties = new Properties();
-        try (InputStream is = DataBaseConnection.class.getClassLoader().getResourceAsStream("db.properties")){
+        try (InputStream is = PropertiesUtils.class
+                .getClassLoader().getResourceAsStream(path)){
             properties.load(is);
         } catch (IOException e) {
             e.printStackTrace();

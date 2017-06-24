@@ -1,7 +1,7 @@
-package apavlikovskyi.airport.servlets.Airplanes;
+package apavlikovskyi.airport.servlets.Tickets;
 
-import apavlikovskyi.airport.dao.AirplanesDAO;
-import apavlikovskyi.airport.entity.AirplanesEntity;
+import apavlikovskyi.airport.dao.VoyageDAO;
+import apavlikovskyi.airport.entity.VoyageEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,17 +15,18 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Diana P on 14.06.2017.
+ * Created by Diana P on 11.05.2017.
  */
-@WebServlet("/add_new_airplane_row")
-public class AddNewRow extends HttpServlet {
+@WebServlet("/add_new_tickets_row")
+public class AddNewRowTicket extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String flight_number =  request.getParameter("flight_number");
-        String model = request.getParameter("model");
-        int seatsCapacity = Integer.parseInt(request.getParameter("seatsCapacity"));
-        AirplanesEntity airplanesEntity = new AirplanesEntity(flight_number,model,seatsCapacity);
-        AirplanesDAO airplanesDAO= new AirplanesDAO();
-        airplanesDAO.save(airplanesEntity);
+        String arrivalPort = request.getParameter("arrival_port");
+        String departurePort = request.getParameter("departure_port");
+        int voyageId = Integer.parseInt(request.getParameter("id"));
+        VoyageEntity voyageEntity = new VoyageEntity(voyageId,flight_number,arrivalPort,departurePort);
+        VoyageDAO voyageDAO= new VoyageDAO();
+        voyageDAO.save(voyageEntity);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,31 +49,34 @@ public class AddNewRow extends HttpServlet {
         out.println("<h3>Voyage table</h3>");
         out.println("<table class='table_blur'>");
         out.println("<tr>");
+        out.println("<td><strong>ID</strong></td>");
         out.println("<td><strong>Flight Number</strong></td>");
-        out.println("<td><strong>Model</strong></td>");
-        out.println("<td><strong>Seats Capacity</strong></td>");
+        out.println("<td><strong>Arrival port</strong></td>");
+        out.println("<td><strong>Departure port</strong></td>");
         out.println("</tr>");
-        AirplanesDAO airplanesDAO=new AirplanesDAO();
-        List<AirplanesEntity> list= airplanesDAO.getAll();
-        list.sort(Comparator.comparing(AirplanesEntity::getModel));
+        VoyageDAO voyageDAO=new VoyageDAO();
+        List<VoyageEntity> list= voyageDAO.getAll();
+        list.sort(Comparator.comparingInt(VoyageEntity::getId));
         for(Iterator it = list.iterator(); it.hasNext();){
-            AirplanesEntity airplanesEntity= (AirplanesEntity) it.next();
+            VoyageEntity voyageEntity= (VoyageEntity) it.next();
             out.println("<tr>");
-            out.println("<td><input type='text' name='flight_number' value='" + airplanesEntity.getVoyage_flightNumber()+"'"+"></td>");
-            out.println("<td><input type='text' name='model' value='" + airplanesEntity.getModel()+"'"+"></td>");
-            out.println("<td><input type='text' name='seatsCapacity' value='" + airplanesEntity.getSeats_capacity()+"'"+"></td>");
+            out.println("<td><input type='text' name='id' value='" + voyageEntity.getId()+"'"+"></td>");
+            out.println("<td><input type='text' name='flight_number' value='" + voyageEntity.getFlightNumber()+"'"+"></td>");
+            out.println("<td><input type='text' name='arrival_port' value='" + voyageEntity.getArrivalPort()+"'"+"></td>");
+            out.println("<td><input type='text' name='departure_port' value='" + voyageEntity.getDeparturePort()+"'"+"></td>");
             out.println("</tr>");
         }
-        out.println("<form class='myForm' method='post' action='add_new_airplane_row'>");
+        out.println("<form class='myForm' method='post' action='add_new_row'>");
         out.println("<tr>");
+        out.println("<td><input type='text' name='id'></td>");
         out.println("<td><input type='text' name='flight_number'></td>");
-        out.println("<td><input type='text' name='model'></td>");
-        out.println("<td><input type='text' name='seatsCapacity'></td>");
+        out.println("<td><input type='text' name='arrival_port'></td>");
+        out.println("<td><input type='text' name='departure_port'></td>");
         out.println("<td><input class='button' type='submit' value='Применить изменения для ID'></td>");
         out.println("</tr>");
         out.println("</form>");
         out.println("</table>");
-        out.println("<p><a href='add_new_airplane_row'>Добавить строку</a></p>");
+        out.println("<p><a href='add_new_row'>Добавить строку</a></p>");
         out.println("<p><a href='http://localhost:8080/'>Вернуться на главную страницу</a></p>");
         out.println("</body>");
         out.print("</html>");
