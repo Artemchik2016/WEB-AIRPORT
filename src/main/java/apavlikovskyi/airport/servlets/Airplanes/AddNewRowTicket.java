@@ -58,7 +58,7 @@ public class AddNewRowTicket extends HttpServlet {
         for(Iterator it = list.iterator(); it.hasNext();){
             AirplanesEntity airplanesEntity= (AirplanesEntity) it.next();
             out.println("<tr>");
-            out.println("<td><input type='text' name='flight_number' value='" + airplanesEntity.getVoyage_flightNumber()+"'"+"></td>");
+            out.println("<td><input type='text' name='flight_number' value='" + airplanesEntity.getFlightNumber()+"'"+"></td>");
             out.println("<td><input type='text' name='model' value='" + airplanesEntity.getModel()+"'"+"></td>");
             out.println("<td><input type='text' name='seatsCapacity' value='" + airplanesEntity.getSeats_capacity()+"'"+"></td>");
             out.println("</tr>");

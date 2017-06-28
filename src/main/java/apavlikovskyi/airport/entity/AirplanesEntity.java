@@ -4,13 +4,12 @@ package apavlikovskyi.airport.entity;
  * Created by Diana P on 04.04.2017.
  */
 public class AirplanesEntity {
-
+    private int id;
     private String Voyage_flightNumber;
     private  String name;
     private int seats_capacity;
+    public AirplanesEntity(){}
 
-
-   public AirplanesEntity(){}
 
     public AirplanesEntity(String voyage_id, String name, int seats_capacity) {
         this.Voyage_flightNumber = voyage_id;
@@ -18,7 +17,15 @@ public class AirplanesEntity {
         this.seats_capacity = seats_capacity;
     }
 
-    public String getVoyage_flightNumber() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFlightNumber() {
         return Voyage_flightNumber;
     }
 

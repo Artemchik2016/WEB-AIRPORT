@@ -53,7 +53,7 @@ public class ViewAirplanesTable extends HttpServlet {
         for(Iterator it = list.iterator(); it.hasNext();){
             AirplanesEntity airplanesEntity= (AirplanesEntity)it.next();
             out.println("<tr>");
-            out.println("<td>" + airplanesEntity.getVoyage_flightNumber()+"</td>");
+            out.println("<td>" + airplanesEntity.getFlightNumber()+"</td>");
             out.println("<td>" + airplanesEntity.getModel() +"</td>");
             out.println("<td>" + airplanesEntity.getSeats_capacity() + "</td>");
             out.println("</tr>");

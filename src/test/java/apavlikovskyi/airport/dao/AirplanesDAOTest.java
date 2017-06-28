@@ -26,8 +26,8 @@ public class AirplanesDAOTest {
         DataBaseConnection.migrate();
         airplanesDAO =new AirplanesDAO();
         voyageDAO=new VoyageDAO();
-        voyageDAO.save(new VoyageEntity(1,"KT4390","Munchen","Venecia"));
-        airplanesDAO.save(new AirplanesEntity("KT4390","TU-134",250));
+        voyageDAO.save(new VoyageEntity(1,"KT430","Munchen","Venecia"));
+        airplanesDAO.save(new AirplanesEntity("KT430","TU-134",250));
     }
 
     @After
@@ -40,28 +40,26 @@ public class AirplanesDAOTest {
 
     @Test
     public void getById(){
-        AirplanesEntity airplanesEntity=airplanesDAO.getById("KT4390");
-        assertEquals(airplanesEntity.getVoyage_flightNumber(),"KT4390");
+        AirplanesEntity airplanesEntity=airplanesDAO.getById(1L);
+        assertEquals(airplanesEntity.getFlightNumber(),"KT430");
     }
 
 
     @Test
     public void delete(){
-        airplanesDAO.deleteById("KT4390");
-        AirplanesEntity arrivalEntity= airplanesDAO.getById("KT4390");
+        airplanesDAO.deleteById(1L);
+        AirplanesEntity arrivalEntity= airplanesDAO.getById(1L);
         assertNull(arrivalEntity);
     }
     @Test
     public void update(){
-        airplanesDAO.update(new AirplanesEntity("KT4390","TU-154",250));
-        assertEquals("TU-154",airplanesDAO.getById("KT4390").getModel());
+        airplanesDAO.update(new AirplanesEntity("KT430","TU-154",250));
+        assertEquals("TU-154",airplanesDAO.getById(1L).getModel());
     }
-
-
 
     @Test
     public void save(){
-        assertEquals(airplanesDAO.getById("KT4390").getModel(),"TU-134");
+        assertEquals(airplanesDAO.getById(1L).getModel(),"TU-134");
     }
 
     @Test

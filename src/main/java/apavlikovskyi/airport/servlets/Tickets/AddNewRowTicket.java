@@ -23,8 +23,8 @@ public class AddNewRowTicket extends HttpServlet {
         String flight_number =  request.getParameter("flight_number");
         String arrivalPort = request.getParameter("arrival_port");
         String departurePort = request.getParameter("departure_port");
-        int voyageId = Integer.parseInt(request.getParameter("id"));
-        VoyageEntity voyageEntity = new VoyageEntity(voyageId,flight_number,arrivalPort,departurePort);
+        int id = Integer.parseInt(request.getParameter("id"));
+        VoyageEntity voyageEntity = new VoyageEntity(id, flight_number,arrivalPort,departurePort);
         VoyageDAO voyageDAO= new VoyageDAO();
         voyageDAO.save(voyageEntity);
     }

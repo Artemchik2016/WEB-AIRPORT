@@ -20,6 +20,9 @@ public abstract class AbstractDAO<T> {
                 .prepareStatement("SELECT * FROM " + getTableName() + " WHERE ID = ?")) {
             statement.setLong(1, id);
             resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                entity = entityFromResult(resultSet);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -36,18 +39,21 @@ public abstract class AbstractDAO<T> {
         }
     }
 
+
     public List<T> getAll(){
         List<T> list=null;
-        ResultSet resultSet=null;
+        ResultSet resultset=null;
         try(PreparedStatement statement=getConnection().prepareStatement("SELECT * FROM " + getTableName())) {
-            resultSet=statement.executeQuery();
+            resultset=statement.executeQuery();
             list = new ArrayList<>();
-            getResultSetAll(list,resultSet);
+            while (resultset.next()) {
+                list.add(entityFromResult(resultset));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }finally{
             try {
-                resultSet.close();
+                resultset.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -56,6 +62,5 @@ public abstract class AbstractDAO<T> {
     }
 
     protected abstract String getTableName();
-    protected abstract List<T> getResultSetAll(List<T> list, ResultSet resultSet);
-    protected abstract T getResultSet(ResultSet resultSet);
+    protected abstract T entityFromResult(ResultSet resultSet) throws SQLException;
 }

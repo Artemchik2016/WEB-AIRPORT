@@ -21,7 +21,7 @@ public class VoyageEntity {
     }
 
     public VoyageEntity(int id, String flightNumber, String arrivalPort, String departurePort) {
-        this.id=id;
+        this.id = id;
         this.flightNumber = flightNumber;
         this.arrivalPort = arrivalPort;
         this.departurePort = departurePort;

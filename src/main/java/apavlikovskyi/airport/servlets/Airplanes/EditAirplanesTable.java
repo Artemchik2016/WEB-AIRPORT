@@ -62,7 +62,7 @@ public class EditAirplanesTable extends HttpServlet {
                 AirplanesEntity airplanes= (AirplanesEntity)iterator.next();
                 out.println("<form class='myForm' method='post' action='edit_airplanes_table'>");
                 out.println("<tr>");
-                out.println("<td><input type='text' name='flight_number' value=" + "'" + airplanes.getVoyage_flightNumber()+ "'" +"></td>");
+                out.println("<td><input type='text' name='flight_number' value=" + "'" + airplanes.getFlightNumber()+ "'" +"></td>");
                 out.println("<td><input type='text' name='model' value='" + airplanes.getModel()+"'"+"></td>");
                 out.println("<td><input type='text' name='seats_capacity' value='" + airplanes.getSeats_capacity()+"'"+"></td>");
                 out.println("<td><input class='button' type='submit' value='Применить изменения для ID'"  +  airplanes.getModel()+ "'></td>");
