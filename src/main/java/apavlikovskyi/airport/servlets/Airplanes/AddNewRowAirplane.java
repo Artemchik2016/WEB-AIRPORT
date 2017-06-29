@@ -18,7 +18,7 @@ import java.util.List;
  * Created by Diana P on 14.06.2017.
  */
 @WebServlet("/add_new_airplane_row")
-public class AddNewRowTicket extends HttpServlet {
+public class AddNewRowAirplane extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String flight_number =  request.getParameter("flight_number");
         String model = request.getParameter("model");
@@ -29,11 +29,6 @@ public class AddNewRowTicket extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         out.println("<html>");
@@ -45,13 +40,13 @@ public class AddNewRowTicket extends HttpServlet {
         out.println("<link rel='stylesheet' type='text/css' href='style2.css'>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h3>Voyage table</h3>");
+        out.println("<h3>Airplanes table</h3>");
         out.println("<table class='table_blur'>");
         out.println("<tr>");
-        out.println("<td><strong>Flight Number</strong></td>");
-        out.println("<td><strong>Model</strong></td>");
-        out.println("<td><strong>Seats Capacity</strong></td>");
-        out.println("</tr>");
+        out.println("<th>Flight Number</th>");
+        out.println("<th>Model</th>");
+        out.println("<th>Seats Capacity</th>");
+        out.println("<tr>");
         AirplanesDAO airplanesDAO=new AirplanesDAO();
         List<AirplanesEntity> list= airplanesDAO.getAll();
         list.sort(Comparator.comparing(AirplanesEntity::getModel));

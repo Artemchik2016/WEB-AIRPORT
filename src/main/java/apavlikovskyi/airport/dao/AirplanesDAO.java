@@ -13,7 +13,7 @@ import static apavlikovskyi.airport.dao.daoUtil.DataBaseConnection.getConnection
 public class AirplanesDAO extends AbstractDAO<AirplanesEntity> {
 
     public void save(AirplanesEntity airplanesEntity) {
-        statementExecute(airplanesEntity, "INSERT INTO airplanes VALUES (null,?,?,?)");
+        statementExecute(airplanesEntity, "INSERT INTO airplanes VALUES(null,?,?,?)");
     }
 
     public void update(AirplanesEntity airplanesEntity) {

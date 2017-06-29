@@ -43,7 +43,7 @@ public class ViewVoyageTable extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         out.println("<h3>Voyage table</h3>");
-        out.print("<table class='table_blur'>");
+        out.print("<table>");
         out.println("<tr>");
         out.println("<td><strong>Flight Number</strong></td>");
         out.println("<td><strong>Arrival port</strong></td>");

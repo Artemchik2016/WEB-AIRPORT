@@ -19,8 +19,6 @@ h1{
     padding: .7em 1.5em; /* отступ от текста */
     outline: none; /* убирать контур в Mozilla */
     width: 180px;
-
-
 }
 
 .main_button:hover {
@@ -30,66 +28,21 @@ h1{
     background: rgb(152,15,0);
 }
 
-/*#main_button2 {
-    color: #fff; !* цвет текста *!
-    text-decoration: none; !* убирать подчёркивание у ссылок *!
-    user-select: none; !* убирать выделение текста *!
-    background: rgb(212,75,20); !* фон кнопки *!
-    padding: .7em 1.5em; !* отступ от текста *!
-    outline: none; !* убирать контур в Mozilla *!
-    width: 180px;
 
-}
-#main_button2:hover {
-    background: rgb(232,95,14);
-} !* при наведении курсора мышки *!
-#main_button2:active {
-    background: rgb(152,15,0);
-} !* при нажатии *!
-*!*/
-
-
-.table_blur {
-    background: #f5ffff;
-    color: black;
+table{
     border-collapse: collapse;
-    text-align: left;
-}
-.table_blur th {
-    border-top: 1px solid #777777;
-    border-bottom: 1px solid #777777;
-    box-shadow: inset 0 1px 0 #999999, inset 0 -1px 0 #999999;
-    background: linear-gradient(#9595b6, #5a567f);
-    color: white;
-    padding: 10px 15px;
-    position: relative;
-}
-.table_blur th:after {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 25%;
-    height: 25%;
     width: 100%;
-    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255,255,255,.08));
 }
-.table_blur tr:nth-child(odd) {
-    background: #ebf3f9;
+
+th, td {
+    text-align: left;
+    padding: 8px;
 }
-.table_blur th:first-child {
-    border-left: 1px solid #777777;
-    border-bottom:  1px solid #777777;
-    box-shadow: inset 1px 1px 0 #999999, inset 0 -1px 0 #999999;
+
+tr:nth-child(even){background-color: #f2a731
 }
-.table_blur th:last-child {
-    border-right: 1px solid #777777;
-    border-bottom:  1px solid #777777;
-    box-shadow: inset -1px 1px 0 #999999, inset 0 -1px 0 #999999;
-}
-.table_blur td {
-    border: 1px solid #e3eef7;
-    padding: 10px 15px;
-    position: relative;
-    transition: all 0.5s ease;
+
+th {
+    background-color: #4CAF50;
+    color: white;
 }

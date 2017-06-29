@@ -21,14 +21,16 @@ public class DataBaseConnection {
     public static Connection getConnection() {
         try {
             if (connection == null || connection.isClosed()) {
+                Class.forName("com.mysql.jdbc.Driver");
                 return connection = DriverManager.getConnection(dbProps.getProperty("db.url"),
                         dbProps.getProperty("db.user"), dbProps.getProperty("db.password"));
             }
-        } catch (SQLException e) {
+        }catch (SQLException  | ClassNotFoundException e ) {
             e.printStackTrace();
         }
         return connection;
-    }
+     }
+
 
     public static void closeConnection() {
         if (connection != null) {
