@@ -29,11 +29,11 @@
 
 
 <form action="/passengers_table">
-    <input class="main_button" type="submit" value="Edit airplane table" >
+    <input class="main_button" type="submit" value="View passenger table" >
 </form>
 
 <form action="/edit_passengers_table">
-    <input class="main_button" type="submit" value="Edit airplane table" >
+    <input class="main_button" type="submit" value="Edit passenger table" >
 </form>
 
 
