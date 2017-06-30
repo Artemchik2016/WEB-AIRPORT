@@ -33,7 +33,7 @@
 </form>
 
 <form action="/edit_passengers_table">
-    <input class="main_button" type="submit" value="Edit passenger table" >
+    <input class="main_button" type="submit" value="Edit passenger table." >
 </form>
 
 
