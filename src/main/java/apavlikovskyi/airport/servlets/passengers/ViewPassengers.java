@@ -1,8 +1,7 @@
-package apavlikovskyi.airport.servlets.Voyages;
+package apavlikovskyi.airport.servlets.passengers;
 
-import apavlikovskyi.airport.dao.VoyageDAO;
-import apavlikovskyi.airport.entity.VoyageEntity;
-
+import apavlikovskyi.airport.dao.PassengersDAO;
+import apavlikovskyi.airport.entity.PassengersEntity;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +13,11 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Артем on 03.05.2017.
+ * Created by Diana P on 30.06.2017.
  */
-@WebServlet("/voyage_table")
-public class ViewVoyageTable extends HttpServlet {
+@WebServlet("/passengers_table")
+public class ViewPassengers extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
     }
 
@@ -42,26 +40,36 @@ public class ViewVoyageTable extends HttpServlet {
         out.println("<title>Airport</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h3>Voyage table</h3>");
+        out.println("<h3>Passengers table</h3>");
         out.print("<table>");
         out.println("<tr>");
-        out.println("<td><strong>Flight Number</strong></td>");
-        out.println("<td><strong>Arrival port</strong></td>");
-        out.println("<td><strong>Departure port</strong></td>");
+        out.println("<th>ID</th>");
+        out.println("<th>First Name</th>");
+        out.println("<th>Last Name</th>");
+        out.println("<th>Nationality</th>");
+        out.println("<th>Passport</th>");
+        out.println("<th>DOB</th>");
+        out.println("<th>Sex</th>");
         out.println("</tr>");
-        VoyageDAO voyageDAO=new VoyageDAO();
-        List<VoyageEntity> list= voyageDAO.getAll();
-        for(Iterator it= list.iterator(); it.hasNext();){
-            VoyageEntity voyageEntity= (VoyageEntity) it.next();
+        PassengersDAO passengersDAO = new PassengersDAO();
+        List<PassengersEntity> list = passengersDAO.getAll();
+        for(Iterator it = list.iterator(); it.hasNext();){
+            PassengersEntity passengersEntity= (PassengersEntity) it.next();
             out.println("<tr>");
-            out.println("<td>" + voyageEntity.getFlightNumber()+"</td>");
-            out.println("<td>" + voyageEntity.getArrivalPort() +"</td>");
-            out.println("<td>" + voyageEntity.getDeparturePort() + "</td>");
+            out.println("<td>" + passengersEntity.getId()+"</td>");
+            out.println("<td>" + passengersEntity.getFirst_name() +"</td>");
+            out.println("<td>" + passengersEntity.getLast_name() + "</td>");
+            out.println("<td>" + passengersEntity.getNationality() + "</td>");
+            out.println("<td>" + passengersEntity.getPassport() + "</td>");
+            out.println("<td>" + passengersEntity.getDob() + "</td>");
+            out.println("<td>" + passengersEntity.getSex() + "</td>");
             out.println("</tr>");
         }
         out.println("</table");
+        out.println("<p><a href='http://localhost:8080/'>Вернуться на главную страницу</a></p>");
         out.println("<body>");
         out.println("</html>");
         out.close();
     }
 }
+

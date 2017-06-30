@@ -36,15 +36,15 @@ public class PassengersDAOTest {
 
     @Test
     public void delete(){
-        passengersDAO.deleteById(1);
-        PassengersEntity passengersEntity= passengersDAO.getById(1);
+        passengersDAO.deleteById(1L);
+        PassengersEntity passengersEntity= passengersDAO.getById(1l);
         assertNull(passengersEntity);
     }
 
 
     @Test
     public void getById(){
-        PassengersEntity passengersEntity=passengersDAO.getById(1);
+        PassengersEntity passengersEntity=passengersDAO.getById(1l);
         assertEquals(passengersEntity.getPassport(),"EE800447");
     }
 
@@ -53,13 +53,13 @@ public class PassengersDAOTest {
     public void update(){
         passengersDAO.update(new PassengersEntity(1,"Lakosta","Kalaka",
                 "Latvian","AA800447","25.23.2003","male"));
-        assertEquals("Latvian",passengersDAO.getById(1).getNationality());
-        assertEquals("Kalaka",passengersDAO.getById(1).getLast_name());
+        assertEquals("Latvian",passengersDAO.getById(1l).getNationality());
+        assertEquals("Kalaka",passengersDAO.getById(1l).getLast_name());
     }
 
     @Test
     public void save(){
-        assertEquals(passengersDAO.getById(1).getPassport(),"EE800447");
+        assertEquals(passengersDAO.getById(1l).getPassport(),"EE800447");
     }
 
     @Test

@@ -1,7 +1,7 @@
-package apavlikovskyi.airport.servlets.Airplanes;
+package apavlikovskyi.airport.servlets.voyages;
 
-import apavlikovskyi.airport.dao.AirplanesDAO;
-import apavlikovskyi.airport.entity.AirplanesEntity;
+import apavlikovskyi.airport.dao.VoyageDAO;
+import apavlikovskyi.airport.entity.VoyageEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,11 +14,12 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Diana P on 04.06.2017.
+ * Created by Артем on 03.05.2017.
  */
-@WebServlet("/airplanes_table")
-public class ViewAirplanesTable extends HttpServlet {
+@WebServlet("/voyage_table")
+public class ViewVoyageTable extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
     }
 
@@ -41,28 +42,28 @@ public class ViewAirplanesTable extends HttpServlet {
         out.println("<title>Airport</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h3>Airplanes table</h3>");
-        out.print("<table>");
+        out.println("<h3>Voyage table</h3>");
+        out.println("<table>");
         out.println("<tr>");
+        out.println("<th>ID</td>");
         out.println("<th>Flight Number</th>");
-        out.println("<th>Model</th>");
-        out.println("<th>Seats Capacity</th>");
+        out.println("<th>Arrival port</th>");
+        out.println("<th>Departure port</th>");
         out.println("</tr>");
-        AirplanesDAO airplanesDAO = new AirplanesDAO();
-        List<AirplanesEntity> list = airplanesDAO.getAll();
-        for(Iterator it = list.iterator(); it.hasNext();){
-            AirplanesEntity airplanesEntity= (AirplanesEntity)it.next();
+        VoyageDAO voyageDAO=new VoyageDAO();
+        List<VoyageEntity> list= voyageDAO.getAll();
+        for(Iterator it= list.iterator(); it.hasNext();){
+            VoyageEntity voyageEntity= (VoyageEntity) it.next();
             out.println("<tr>");
-            out.println("<td>" + airplanesEntity.getFlightNumber()+"</td>");
-            out.println("<td>" + airplanesEntity.getModel() +"</td>");
-            out.println("<td>" + airplanesEntity.getSeats_capacity() + "</td>");
+            out.println("<td>" + voyageEntity.getId()+"</td>");
+            out.println("<td>" + voyageEntity.getFlightNumber()+"</td>");
+            out.println("<td>" + voyageEntity.getArrivalPort() +"</td>");
+            out.println("<td>" + voyageEntity.getDeparturePort() + "</td>");
             out.println("</tr>");
         }
         out.println("</table");
-        out.println("<p><a href='http://localhost:8080/'>Вернуться на главную страницу</a></p>");
         out.println("<body>");
         out.println("</html>");
         out.close();
     }
 }
-

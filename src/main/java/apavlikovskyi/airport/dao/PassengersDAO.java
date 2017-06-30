@@ -13,16 +13,7 @@ import static apavlikovskyi.airport.dao.daoUtil.DataBaseConnection.getConnection
 /**
  * Created by Артем on 08.04.2017.
  */
-public class PassengersDAO {
-
-    public  void deleteById(int id){
-        try(PreparedStatement statement = getConnection().prepareStatement("DELETE FROM passengers WHERE ID = ?")) {
-            statement.setInt(1,id);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+public class PassengersDAO extends AbstractDAO<PassengersEntity> {
 
     public List<PassengersEntity> getAll(){
         List<PassengersEntity> list=null;
@@ -53,45 +44,14 @@ public class PassengersDAO {
         return list;
     }
 
-    public PassengersEntity getById (int id){
-        PassengersEntity passengersEntity=null;
-        ResultSet resultSet=null;
-        try (PreparedStatement statement = getConnection().prepareStatement("SELECT * FROM passengers WHERE ID = ?")) {
-            statement.setInt(1,id);
-            resultSet= statement.executeQuery();
-            while(resultSet.next()) {
-                passengersEntity = new PassengersEntity();
-                passengersEntity.setId(resultSet.getInt("ID"));
-                passengersEntity.setFirst_name(resultSet.getString("First_name"));
-                passengersEntity.setLast_name(resultSet.getString("Last_name"));
-                passengersEntity.setNationality(resultSet.getString("Nationality"));
-                passengersEntity.setPassport(resultSet.getString("Passport"));
-                passengersEntity.setDob(resultSet.getString("DOB"));
-                passengersEntity.setSex(resultSet.getString("SEX"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally{
-            try {
-                resultSet.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return passengersEntity;
-    }
-
-
-
     public  void save(PassengersEntity passengersEntity){
-        try(PreparedStatement statement = getConnection().prepareStatement("INSERT INTO passengers VALUES (?,?,?,?,?,?,?)")) {
-            statement.setInt(1,passengersEntity.getId());
-            statement.setString(2,passengersEntity.getFirst_name());
-            statement.setString(3,passengersEntity.getLast_name());
-            statement.setString(4,passengersEntity.getNationality());
-            statement.setString(5,passengersEntity.getPassport());
-            statement.setString(6,passengersEntity.getDob());
-            statement.setString(7,passengersEntity.getSex());
+        try(PreparedStatement statement = getConnection().prepareStatement("INSERT INTO passengers VALUES (null,?,?,?,?,?,?)")) {
+            statement.setString(1,passengersEntity.getFirst_name());
+            statement.setString(2,passengersEntity.getLast_name());
+            statement.setString(3,passengersEntity.getNationality());
+            statement.setString(4,passengersEntity.getPassport());
+            statement.setString(5,passengersEntity.getDob());
+            statement.setString(6,passengersEntity.getSex());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -112,5 +72,23 @@ public class PassengersDAO {
             e.printStackTrace();
         }
     }
+
+    protected String getTableName () {
+        return "passengers";
+    }
+
+    @Override
+    protected PassengersEntity entityFromResult(ResultSet resultSet) throws SQLException {
+        PassengersEntity passengersEntity = new PassengersEntity();
+        passengersEntity.setId(resultSet.getInt("ID"));
+        passengersEntity.setFirst_name(resultSet.getString("First_name"));
+        passengersEntity.setLast_name(resultSet.getString("Last_name"));
+        passengersEntity.setNationality(resultSet.getString("Nationality"));
+        passengersEntity.setPassport(resultSet.getString("Passport"));
+        passengersEntity.setDob(resultSet.getString("DOB"));
+        passengersEntity.setSex(resultSet.getString("SEX"));
+        return passengersEntity;
+    }
+
 }
 

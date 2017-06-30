@@ -1,8 +1,6 @@
 package apavlikovskyi.airport.servlets.Airplanes;
-
 import apavlikovskyi.airport.dao.AirplanesDAO;
 import apavlikovskyi.airport.entity.AirplanesEntity;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +11,6 @@ import java.io.PrintWriter;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
-
 /**
  * Created by Diana P on 14.06.2017.
  */

@@ -28,5 +28,14 @@
 </form>
 
 
+<form action="/passengers_table">
+    <input class="main_button" type="submit" value="Edit airplane table" >
+</form>
+
+<form action="/edit_passengers_table">
+    <input class="main_button" type="submit" value="Edit airplane table" >
+</form>
+
+
 </body>
 </html>

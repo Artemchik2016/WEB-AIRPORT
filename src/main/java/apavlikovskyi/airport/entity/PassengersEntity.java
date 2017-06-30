@@ -14,6 +14,17 @@ public class PassengersEntity {
 
     public PassengersEntity() {}
 
+
+    public PassengersEntity(String first_name, String last_name, String nationality, String passport, String dob, String sex) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.nationality = nationality;
+        this.passport = passport;
+        this.dob = dob;
+        this.sex = sex;
+    }
+
+
     public PassengersEntity(int id, String first_name, String last_name, String nationality, String passport, String dob, String sex) {
         this.id = id;
         this.first_name = first_name;

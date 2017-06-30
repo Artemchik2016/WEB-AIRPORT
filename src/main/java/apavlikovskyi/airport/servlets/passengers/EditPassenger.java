@@ -1,10 +1,6 @@
-package apavlikovskyi.airport.servlets.Airplanes;
-
-import apavlikovskyi.airport.dao.AirplanesDAO;
+package apavlikovskyi.airport.servlets.passengers;
 import apavlikovskyi.airport.dao.PassengersDAO;
-import apavlikovskyi.airport.entity.AirplanesEntity;
 import apavlikovskyi.airport.entity.PassengersEntity;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,19 +13,23 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Diana P on 04.06.2017.
+ * Created by Diana P on 30.06.2017.
  */
-@WebServlet("/edit_airplanes_table")
-public class EditAirplanesTable extends HttpServlet {
-
+@WebServlet("/edit_passengers_table")
+public class EditPassenger extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String flight_number =  request.getParameter("flight_number");
-        String model = request.getParameter("model");
-        int seatsCapacity = Integer.parseInt(request.getParameter("seats_capacity"));
-        AirplanesEntity airplanesEntity = new AirplanesEntity(flight_number,model,seatsCapacity);
-        AirplanesDAO airplanesDAO= new AirplanesDAO();
-        airplanesDAO.update(airplanesEntity);
+        int id = Integer.parseInt(request.getParameter("id"));
+        String first_name =  request.getParameter("first_name");
+        String last_name = request.getParameter("last_name");
+        String nationality = request.getParameter("last_name");
+        String passport = request.getParameter("passport");
+        String dob = request.getParameter("dob");
+        String sex = request.getParameter("sex");
+        PassengersEntity passengersEntity = new PassengersEntity(id,first_name,last_name,nationality,passport,dob,sex);
+        PassengersDAO passengersDAO= new PassengersDAO();
+        passengersDAO.update(passengersEntity);
     }
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -44,6 +44,7 @@ public class EditAirplanesTable extends HttpServlet {
         out.println("<link rel='stylesheet' type='text/css' href='style2.css'>");
         out.println("</head>");
         out.println("<body>");
+        out.println("<h3>Passengers table</h3>");
         out.print("<table>");
         out.println("<tr>");
         out.println("<th>ID</th>");
@@ -58,23 +59,25 @@ public class EditAirplanesTable extends HttpServlet {
         List<PassengersEntity> list = passengersDAO.getAll();
         list.sort(Comparator.comparing(PassengersEntity::getLast_name));
         for(Iterator iterator = list.iterator(); iterator.hasNext();){
-            AirplanesEntity airplanes= (AirplanesEntity)iterator.next();
-            out.println("<form class='myForm' method='post' action='edit_airplanes_table'>");
+            PassengersEntity passengersEntity= (PassengersEntity) iterator.next();
+            out.println("<form class='myForm' method='post' action='edit_passengers_table'>");
             out.println("<tr>");
-            out.println("<td><input type='text' name='flight_number'" + "'" + airplanes.getFlightNumber()+ "'" +"></td>");
-            out.println("<td><input type='text' name='model' value='" + airplanes.getModel()+"'"+"></td>");
-            out.println("<td><input type='text' name='seats_capacity' value='" + airplanes.getSeats_capacity()+"'"+"></td>");
-            out.println("<td><input class='button' type='submit' value='Применить изменения для ID'"  +  airplanes.getModel()+ "'></td>");
+            out.println("<td><input type='text' name='id' value=" + "'" + passengersEntity.getId()+ "'" +"></td>");
+            out.println("<td><input type='text' name='first_name' value=" + "'" + passengersEntity.getFirst_name()+ "'" +"></td>");
+            out.println("<td><input type='text' name='last_name' value='" + passengersEntity.getLast_name()+"'"+"></td>");
+            out.println("<td><input type='text' name='nationality' value='" + passengersEntity.getNationality()+"'"+"></td>");
+            out.println("<td><input type='text' name='passport' value='" + passengersEntity.getPassport()+"'"+"></td>");
+            out.println("<td><input type='text' name='dob' value='" + passengersEntity.getDob()+"'"+"></td>");
+            out.println("<td><input type='text' name='sex' value='" + passengersEntity.getSex()+"'"+"></td>");
+            out.println("<td><input class='button' type='submit' value='Применить изменения для ID'"  +  passengersEntity.getId()+ "'></td>");
             out.println("</tr>");
             out.println("</form>");
         }
         out.println("</table>");
-        out.println("<p><a href='add_new_airplane_row'>Добавить новую строку</a></p>");
+        out.println("<p><a href='/add_new_passenger'>Добавить новую строку</a></p>");
         out.println("<p><a href='http://localhost:8080/'>Вернуться на главную страницу</a></p>");
         out.println("</body>");
         out.print("</html>");
         out.close();
     }
 }
-
-
