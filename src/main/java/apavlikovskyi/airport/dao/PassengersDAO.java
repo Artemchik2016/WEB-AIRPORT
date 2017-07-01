@@ -27,9 +27,9 @@ public class PassengersDAO extends AbstractDAO<PassengersEntity> {
                 passengersEntity.setFirst_name(resultSet.getString("First_name"));
                 passengersEntity.setLast_name(resultSet.getString("Last_name"));
                 passengersEntity.setNationality(resultSet.getString("Nationality"));
-                passengersEntity.setNationality(resultSet.getString("Passport"));
-                passengersEntity.setPassport(resultSet.getString("DOB"));
-                passengersEntity.setDob(resultSet.getString("SEX"));
+                passengersEntity.setPassport(resultSet.getString("Passport"));
+                passengersEntity.setDob(resultSet.getString("DOB"));
+                passengersEntity.setSex(resultSet.getString("SEX"));
                 list.add(passengersEntity);
             }
         } catch (SQLException e) {

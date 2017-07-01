@@ -97,12 +97,12 @@ public class ArrivalDAO {
     public  void update(ArrivalEntity arrivalEntity){
         try (PreparedStatement statement= getConnection().prepareStatement("UPDATE arrival SET " +
                 "Date = ?, Time = ?, Terminal = ?,Flight_status=?, Gate=? WHERE Voyage_flightNumber = ?")) {
-            statement.setString(1,arrivalEntity.getVoyage_id());
-            statement.setString(2,arrivalEntity.getDate());
-            statement.setString(3,arrivalEntity.getTime());
-            statement.setString(4,arrivalEntity.getTerminal());
-            statement.setString(5,arrivalEntity.getFlight_status());
-            statement.setString(6,arrivalEntity.getGate());
+            statement.setString(1,arrivalEntity.getDate());
+            statement.setString(2,arrivalEntity.getTime());
+            statement.setString(3,arrivalEntity.getTerminal());
+            statement.setString(4,arrivalEntity.getFlight_status());
+            statement.setString(5,arrivalEntity.getGate());
+            statement.setString(6,arrivalEntity.getVoyage_id());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

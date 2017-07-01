@@ -21,7 +21,7 @@ public class EditPassenger extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         String first_name =  request.getParameter("first_name");
         String last_name = request.getParameter("last_name");
-        String nationality = request.getParameter("last_name");
+        String nationality = request.getParameter("nationality");
         String passport = request.getParameter("passport");
         String dob = request.getParameter("dob");
         String sex = request.getParameter("sex");

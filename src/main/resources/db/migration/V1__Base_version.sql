@@ -40,7 +40,6 @@ Time VARCHAR(20),
 Terminal VARCHAR(10),
 Flight_status VARCHAR(10),
 Gate VARCHAR(10),
-PRIMARY KEY(Voyage_flightNumber),
 FOREIGN KEY(Voyage_flightNumber) REFERENCES voyage(Flight_number)
 );
 
@@ -51,6 +50,5 @@ Time VARCHAR(20),
 Terminal VARCHAR(10),
 Flight_status VARCHAR(10),
 Gate VARCHAR(10),
-PRIMARY KEY(Voyage_flightNumber),
 FOREIGN KEY(Voyage_flightNumber) REFERENCES voyage(Flight_number)
 );

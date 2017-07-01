@@ -20,7 +20,7 @@ public class AddNewPassenger extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String first_name =  request.getParameter("first_name");
         String last_name = request.getParameter("last_name");
-        String nationality = request.getParameter("last_name");
+        String nationality = request.getParameter("nationality");
         String passport = request.getParameter("passport");
         String dob = request.getParameter("dob");
         String sex = request.getParameter("sex");

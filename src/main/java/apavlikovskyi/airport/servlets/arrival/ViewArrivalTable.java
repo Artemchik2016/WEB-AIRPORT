@@ -1,7 +1,7 @@
-package apavlikovskyi.airport.servlets.passengers;
+package apavlikovskyi.airport.servlets.arrival;
 
-import apavlikovskyi.airport.dao.PassengersDAO;
-import apavlikovskyi.airport.entity.PassengersEntity;
+import apavlikovskyi.airport.dao.ArrivalDAO;
+import apavlikovskyi.airport.entity.ArrivalEntity;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,10 +13,10 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Diana P on 30.06.2017.
+ * Created by Diana P on 01.07.2017.
  */
-@WebServlet("/passengers_table")
-public class ViewPassengers extends HttpServlet {
+@WebServlet("/arrival_table")
+public class ViewArrivalTable extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -35,29 +35,27 @@ public class ViewPassengers extends HttpServlet {
         out.println("<title>Airport</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h3>Passengers table</h3>");
+        out.println("<h3>Arrival table</h3>");
         out.print("<table>");
         out.println("<tr>");
-        out.println("<th>ID</th>");
-        out.println("<th>First Name</th>");
-        out.println("<th>Last Name</th>");
-        out.println("<th>Nationality</th>");
-        out.println("<th>Passport</th>");
-        out.println("<th>DOB</th>");
-        out.println("<th>Sex</th>");
+        out.println("<th>Voyage flight</th>");
+        out.println("<th>Date</th>");
+        out.println("<th>Time</th>");
+        out.println("<th>Terminal</th>");
+        out.println("<th>Flight_status</th>");
+        out.println("<th>Gate</th>");
         out.println("</tr>");
-        PassengersDAO passengersDAO = new PassengersDAO();
-        List<PassengersEntity> list = passengersDAO.getAll();
+        ArrivalDAO arrivalDAO = new ArrivalDAO();
+        List<ArrivalEntity> list = arrivalDAO.getAll();
         for(Iterator it = list.iterator(); it.hasNext();){
-            PassengersEntity passengersEntity= (PassengersEntity) it.next();
+            ArrivalEntity arrivalEntity= (ArrivalEntity) it.next();
             out.println("<tr>");
-            out.println("<td>" + passengersEntity.getId()+"</td>");
-            out.println("<td>" + passengersEntity.getFirst_name() +"</td>");
-            out.println("<td>" + passengersEntity.getLast_name() + "</td>");
-            out.println("<td>" + passengersEntity.getNationality() + "</td>");
-            out.println("<td>" + passengersEntity.getPassport() + "</td>");
-            out.println("<td>" + passengersEntity.getDob() + "</td>");
-            out.println("<td>" + passengersEntity.getSex() + "</td>");
+            out.println("<td>" + arrivalEntity.getVoyage_id()+"</td>");
+            out.println("<td>" + arrivalEntity.getDate() +"</td>");
+            out.println("<td>" + arrivalEntity.getTime() + "</td>");
+            out.println("<td>" + arrivalEntity.getTerminal() + "</td>");
+            out.println("<td>" + arrivalEntity.getFlight_status() + "</td>");
+            out.println("<td>" + arrivalEntity.getGate() + "</td>");
             out.println("</tr>");
         }
         out.println("</table");

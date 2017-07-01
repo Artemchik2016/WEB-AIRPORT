@@ -36,6 +36,14 @@
     <input class="main_button" type="submit" value="Edit passenger table." >
 </form>
 
+<form action="/arrival_table">
+    <input class="main_button" type="submit" value="View arrival table." >
+</form>
+
+<form action="/edit_arrival_table">
+    <input class="main_button" type="submit" value="Edit arrival table." >
+</form>
+
 
 </body>
 </html>
